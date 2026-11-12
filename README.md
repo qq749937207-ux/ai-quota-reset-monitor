@@ -29,6 +29,8 @@ This is a **Grok Bot skill** (reusable instructions plus scheduled routines), no
 - **默认公司**：ChatGPT（OpenAI）、Grok（含 Grok Bot）、Claude（Anthropic）。OpenAI 这边已经核到的突发重置，多为 Codex / ChatGPT Work 额度，展示时要标明范围。
 - **节奏**：大约每 30 分钟（可提前或延后最多 15 分钟）。账号清单在 [`docs/accounts.md`](docs/accounts.md)。
 
+公开事件时间线：已当场核对的突发重置会记入 [`docs/events.md`](docs/events.md) 和 [`data/resets.yaml`](data/resets.yaml)，供查阅和按同样格式补交。只收录有可打开来源的事件；疑似单独标记，不计入正式次数。初版不保证历史完整。
+
 分类摘要：
 
 - **正式宣布**：明确说正在重置、已经重置，或发放可储蓄重置。计入正式次数。
@@ -56,6 +58,8 @@ This is a **Grok Bot skill** (reusable instructions plus scheduled routines), no
 | [`routine/model-watch.md`](routine/model-watch.md) | 新模型预告例行（每天一次） |
 | [`docs/accounts.md`](docs/accounts.md) | 额度重置：已核实的监测账号 |
 | [`docs/model-watch.md`](docs/model-watch.md) | 新模型预告：已核实的账号、排除项和官网补充 |
+| [`docs/events.md`](docs/events.md) | 突发额度重置：可核对的公开事件时间线 |
+| [`data/resets.yaml`](data/resets.yaml) | 上述时间线的机器可读数据 |
 
 ## 使用方式
 
@@ -75,7 +79,7 @@ This is a **Grok Bot skill** (reusable instructions plus scheduled routines), no
 
 ## 贡献
 
-欢迎补充会实际宣布额外重置或新模型的账号，或改进技能说明。请看 [CONTRIBUTING.md](CONTRIBUTING.md)。不要编造尚未核实的公告、数字或帖链接。
+欢迎补充会实际宣布额外重置或新模型的账号，按同样格式向公开时间线补一条已核实事件，或改进技能说明。请看 [CONTRIBUTING.md](CONTRIBUTING.md)。不要编造尚未核实的公告、数字或帖链接。
 
 ## 许可与声明
 

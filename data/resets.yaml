@@ -1,0 +1,956 @@
+# 公开的 AI 突发 / 额外额度重置事件时间线（机器可读）
+#
+# 收录规则：
+#   - 只收录正常额度周期之外的突发或额外重置、加赠、可储蓄一次性额度。
+#   - 每条必须有可当场核对的原帖或官方链接；没有核对过的事件不要写入。
+#   - status 为 official（正式宣布）或 suspected（高度疑似）。
+#   - 正式宣布：官方或监测名单中的授权账号明确表示正在重置、已经重置，或发放可储蓄重置。
+#   - 高度疑似：来自监测账号、尚未正式宣布，但强烈暗示即将或可能有一次额外重置。
+#   - 疑似不计入正式次数。若之后正式宣布，将本条改为 official，并填写 confirmed_at /
+#     confirmed_source，保留原疑似来源；不要再新增一条正式事件重复计数。
+#   - 不算：路人猜测、无关玩笑、常规提额、限期加倍、套餐改价、单纯的产品发布、
+#     正常周期恢复、自动回复，以及仅针对故障受影响用户的小范围补偿（除非来源明确
+#     向更大范围用户发放了额外重置）。
+#   - 同一事件被多人宣布或转发只保留一条。
+#
+# 字段：
+#   id              稳定可读标识，格式 YYYY-MM-DD-company-shortslug（日期为北京时间日期）
+#   company         OpenAI、xAI 或 Anthropic
+#   status          official 或 suspected
+#   announced_at    公布或被观察到的本地时间，格式 YYYY-MM-DD HH:MM
+#   timezone        固定为 Asia/Shanghai（UTC+8）。来源若为其他时区，已换算后再写入。
+#   products        来源明确提到的产品线；未写明则留空列表，不要猜测。
+#   summary         一句话要点，不引用、不改写原帖措辞
+#   source.url      可打开的原帖或官方链接
+#   source.account  来源账号，如 @ClaudeDevs
+#   source.post_id  若为 X 帖，则为帖 ID
+#   confirmed_at / confirmed_source  仅用于疑似转正式
+#   notes           可选补充（如尚未被官方账号确认、即时到账或可储蓄、同事件跟帖）
+#
+# 人类可读对照见 docs/events.md。两份文件必须同步更新。
+#
+# 本初版覆盖范围与排除项见 docs/events.md 文首说明。不保证历史完整。
+
+events:
+  # --- OpenAI ---
+  - id: 2026-11-11-openai-codex-banked-hint
+    company: OpenAI
+    status: suspected
+    announced_at: "2026-11-11 14:57"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 暗示周四可能适合发放一次可储蓄重置，并点到 Codex；截至本条收录时尚未见到正式落地宣布。
+    source:
+      url: https://x.com/thsottiaux/status/2120410480204525936
+      account: "@thsottiaux"
+      post_id: "2120410480204525936"
+    notes: "同一会话稍早还有一条未点名产品的铺垫帖（https://x.com/thsottiaux/status/2120410006273380750），不另计。尚未被官方账号或后续正式宣布确认。"
+
+  - id: 2026-11-02-openai-banked-2
+    company: OpenAI
+    status: official
+    announced_at: "2026-11-02 07:27"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 宣布发放本轮可储蓄重置的第 2 张（共 2 张）。
+    source:
+      url: https://x.com/thsottiaux/status/2117035794678546764
+      account: "@thsottiaux"
+      post_id: "2117035794678546764"
+    notes: 来源未写明产品线。属于 Tibo「28 天」系列最后一天；前一日预告接下来两天将发放可储蓄重置，不另计。
+
+  - id: 2026-11-01-openai-banked-1
+    company: OpenAI
+    status: official
+    announced_at: "2026-11-01 08:43"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 宣布发放本轮可储蓄重置的第 1 张（共 2 张）。
+    source:
+      url: https://x.com/thsottiaux/status/2116692529970311254
+      account: "@thsottiaux"
+      post_id: "2116692529970311254"
+    notes: 来源未写明产品线。与次日「Banked 2/2」分计为两次可储蓄重置。
+
+  - id: 2026-10-28-openai-day23-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-28 10:42"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 23 天」更新中宣布当天进行一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2115273064481218829
+      account: "@thsottiaux"
+      post_id: "2115273064481218829"
+    notes: 来源未写明产品线。
+
+  - id: 2026-10-26-openai-day21-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-26 13:21"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 21 天」更新中宣布当天进行一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2114588174249071102
+      account: "@thsottiaux"
+      post_id: "2114588174249071102"
+    notes: 来源未写明产品线。
+
+  - id: 2026-10-25-openai-day20-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-25 11:39"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 20 天」更新中宣布进行一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2114200152701575656
+      account: "@thsottiaux"
+      post_id: "2114200152701575656"
+    notes: 来源未写明产品线。本帖措辞较短，但与同期「今天是重置日」系列宣布同一口径。
+
+  - id: 2026-10-23-openai-day18-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-23 12:46"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 18 天」更新中宣布进行一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2113492187770175603
+      account: "@thsottiaux"
+      post_id: "2113492187770175603"
+    notes: 来源未写明本次重置的产品范围。同帖提到 Codex 与 ChatGPT Work 的其他进展，但不能据此写成产品范围。
+
+  - id: 2026-10-22-openai-day17-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-22 14:55"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 17 天」更新中宣布当天为重置日。
+    source:
+      url: https://x.com/thsottiaux/status/2113162277688070445
+      account: "@thsottiaux"
+      post_id: "2113162277688070445"
+    notes: 来源未写明产品线。
+
+  - id: 2026-10-20-openai-day15-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-20 14:33"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 15 天」更新中宣布进行一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2112432076767289678
+      account: "@thsottiaux"
+      post_id: "2112432076767289678"
+    notes: 来源未写明产品线。
+
+  - id: 2026-10-18-openai-day13-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-18 00:20"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 13 天」更新中宣布进行一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2111492673890824348
+      account: "@thsottiaux"
+      post_id: "2111492673890824348"
+    notes: 来源未写明产品线。
+
+  - id: 2026-10-15-openai-day10-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-15 12:55"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 10 天」更新中宣布进行一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2110595484180214059
+      account: "@thsottiaux"
+      post_id: "2110595484180214059"
+    notes: 来源未写明产品线。
+
+  - id: 2026-10-13-openai-day8-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-13 09:03"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 8 天」更新中宣布进行一次全局额度重置，并说明将于当天美西时间结束前落地。
+    source:
+      url: https://x.com/thsottiaux/status/2109812216212099456
+      account: "@thsottiaux"
+      post_id: "2109812216212099456"
+    notes: "来源未写明产品线。同分钟跟帖见 https://x.com/thsottiaux/status/2109812360596865224，不另计。"
+
+  - id: 2026-10-11-openai-day6-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-11 06:15"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在「第 6 天」更新中宣布进行一次全局额度重置，并说明将于当天结束前落地。
+    source:
+      url: https://x.com/thsottiaux/status/2109045220411351517
+      account: "@thsottiaux"
+      post_id: "2109045220411351517"
+    notes: "来源未写明产品线。同会话跟帖见 https://x.com/thsottiaux/status/2109045392684032299；次日传播完成说明见 https://x.com/thsottiaux/status/2109132167112782291。均不另计。"
+
+  - id: 2026-10-08-openai-day3-banked
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-08 03:19"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 宣布向所有付费账户发放一张可储蓄重置。
+    source:
+      url: https://x.com/thsottiaux/status/2107913674593644711
+      account: "@thsottiaux"
+      post_id: "2107913674593644711"
+    notes: 来源写明对象为所有付费账户，未写明产品线。同帖提到 Codex 与 ChatGPT Work 的活跃用户里程碑，但不能据此写成产品范围。
+
+  - id: 2026-10-07-openai-day2-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-07 11:35"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 宣布已根据社区投票完成一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2107676072871600470
+      account: "@thsottiaux"
+      post_id: "2107676072871600470"
+    notes: 来源未写明产品线。稍早的投票/预告帖不另计。
+
+  - id: 2026-10-02-openai-paid-chatgpt-global
+    company: OpenAI
+    status: official
+    announced_at: "2026-10-02 10:14"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT
+    summary: "Tibo 宣布将于次日 10:00 PST 为所有付费 ChatGPT 账户进行一次全局额度重置。"
+    source:
+      url: https://x.com/thsottiaux/status/2105843926221660585
+      account: "@thsottiaux"
+      post_id: "2105843926221660585"
+    notes: "传播完成说明见 https://x.com/thsottiaux/status/2106131810921136451。另有跟进称部分 Pro 500 账户未按预期到账、将补发，不另计一次正式事件。"
+
+  - id: 2026-09-26-openai-codex-work-paid
+    company: OpenAI
+    status: official
+    announced_at: "2026-09-26 08:07"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布将为 Codex 与 ChatGPT Work 的所有付费用户重置用量额度。
+    source:
+      url: https://x.com/thsottiaux/status/2103637477760311522
+      account: "@thsottiaux"
+      post_id: "2103637477760311522"
+    notes: "当日稍后传播完成说明见 https://x.com/thsottiaux/status/2103911959544610829，不另计。"
+
+  - id: 2026-09-12-openai-astra-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-09-12 11:20"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT
+    summary: Tibo 向 Astra 用户宣布将在当天午夜前落地一次额度重置，并说明已修复若干质量问题。
+    source:
+      url: https://x.com/thsottiaux/status/2098612714704891959
+      account: "@thsottiaux"
+      post_id: "2098612714704891959"
+    notes: "产品范围按来源对 Astra 用户的称呼收录。传播完成说明见 https://x.com/thsottiaux/status/2098685367058612394，不另计。"
+
+  - id: 2026-09-08-openai-paid-subs-global
+    company: OpenAI
+    status: official
+    announced_at: "2026-09-08 03:24"
+    timezone: Asia/Shanghai
+    products: []
+    summary: "Tibo 宣布将为所有付费订阅做一次全局用量重置，计划于当天 18:00 PST 左右落地。"
+    source:
+      url: https://x.com/thsottiaux/status/2097043464538264003
+      account: "@thsottiaux"
+      post_id: "2097043464538264003"
+    notes: "来源写明对象为所有付费订阅，未写明产品线。落地说明见 https://x.com/thsottiaux/status/2097174560412246215，不另计。"
+
+  - id: 2026-09-05-openai-plus-pro-business-banked
+    company: OpenAI
+    status: official
+    announced_at: "2026-09-05 08:39"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT
+    summary: Tibo 宣布当天再为所有 Plus、Pro 与 Business 用户发放一次完整的可储蓄重置，于当天结束前落地。
+    source:
+      url: https://x.com/thsottiaux/status/2096035437299237298
+      account: "@thsottiaux"
+      post_id: "2096035437299237298"
+    notes: "同晚稍早还有一条面向尚未获得 Astra 的 Plus/Business 用户的较窄说明（https://x.com/thsottiaux/status/2095979536043401428），视为同一轮安排，不另计。"
+
+  - id: 2026-09-04-openai-astra-access-daily-banked
+    company: OpenAI
+    status: official
+    announced_at: "2026-09-04 07:12"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT
+    summary: Tibo 宣布：付费 ChatGPT 方案中尚未获得 Astra 的用户，每缺一天将获发一张可储蓄重置，首张约三小时内到账。
+    source:
+      url: https://x.com/thsottiaux/status/2095651088502591861
+      account: "@thsottiaux"
+      post_id: "2095651088502591861"
+    notes: 这是一项按日补偿的可储蓄重置安排，按一次正式事件收录，不按日重复计数。
+
+  - id: 2026-08-31-openai-25m-codex-work
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-31 03:24"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: "Tibo 宣布 Codex 与 ChatGPT Work 的额度重置将于 18:00 PST 落地，次日确认已为所有付费订阅完成，以庆祝活跃用户达到 2500 万。"
+    source:
+      url: https://x.com/thsottiaux/status/2094144275957350900
+      account: "@thsottiaux"
+      post_id: "2094144275957350900"
+    notes: "次日确认帖见 https://x.com/thsottiaux/status/2094252447271366730。几乎同时还有一条仅修正笔误的重复帖，不另计。"
+
+  - id: 2026-08-30-openai-codex-work-saturday
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-30 04:43"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布为 Codex 与 ChatGPT Work 的所有付费用户重置用量，并说明近期修复了多项导致额外耗用的问题。
+    source:
+      url: https://x.com/thsottiaux/status/2093801758665715784
+      account: "@thsottiaux"
+      post_id: "2093801758665715784"
+    notes: 与次日庆祝 2500 万用户的那次重置分计；本条为当日宣布并正在进行的重置。
+
+  - id: 2026-08-23-openai-paid-subs-codex-fixes
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-23 14:11"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 宣布将在次日修复 Codex 用量问题的同时，为所有付费订阅做一次完整用量重置。
+    source:
+      url: https://x.com/thsottiaux/status/2091407991736332689
+      account: "@thsottiaux"
+      post_id: "2091407991736332689"
+    notes: "来源写明对象为所有付费订阅；上下文是 Codex 用量问题。跟帖称约于次日 14:00 PST 落地，传播完成说明见 https://x.com/thsottiaux/status/2091688655828246890。均不另计。"
+
+  - id: 2026-08-21-openai-20m-codex-work-banked
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-21 19:43"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布为庆祝 Codex 活跃用户达到 2000 万，将在当天向每名 Codex 与 ChatGPT Work 用户发放一张可自行使用的可储蓄重置。
+    source:
+      url: https://x.com/thsottiaux/status/2090766694897619318
+      account: "@thsottiaux"
+      post_id: "2090766694897619318"
+    notes: "当晚补充说明对象为所有付费用户、约 20:00 PST 到账（https://x.com/thsottiaux/status/2090947196107764189）。落地确认见 https://x.com/thsottiaux/status/2090964822422949999。均不另计。"
+
+  - id: 2026-08-13-openai-15m-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-13 09:01"
+    timezone: Asia/Shanghai
+    products: []
+    summary: Tibo 在提到 Codex 活跃用户已超过 1500 万的同时，宣布将在约一小时内为大家落地一次额度重置。
+    source:
+      url: https://x.com/thsottiaux/status/2087706104814023111
+      account: "@thsottiaux"
+      post_id: "2087706104814023111"
+    notes: 来源未直接写明产品范围，宣布语境是 Codex 用户里程碑。前一日「明天有惊喜」的预告不另计。
+
+  - id: 2026-08-11-openai-codex-work-monday
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-11 08:28"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT Work
+      - Codex
+    summary: Tibo 宣布已为所有付费 ChatGPT Work 与 Codex 用户重置用量额度。
+    source:
+      url: https://x.com/thsottiaux/status/2086972933566857393
+      account: "@thsottiaux"
+      post_id: "2086972933566857393"
+    notes: 稍早「周一再做一次」的预告不另计。
+
+  - id: 2026-08-09-openai-sol-celebration
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-09 04:29"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT Work
+      - Codex
+    summary: Tibo 宣布已为 ChatGPT Work 与 Codex 的所有付费用户重置用量额度。
+    source:
+      url: https://x.com/thsottiaux/status/2086188036493344823
+      account: "@thsottiaux"
+      post_id: "2086188036493344823"
+    notes: 同帖还提到 GPT-5.6 Sol 可在多处使用，属产品说明，不另计事件。
+
+  - id: 2026-08-01-openai-codex-work-weekend
+    company: OpenAI
+    status: official
+    announced_at: "2026-08-01 11:32"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布已为 Codex 与 ChatGPT Work 重置用量额度。
+    source:
+      url: https://x.com/thsottiaux/status/2083395449814229287
+      account: "@thsottiaux"
+      post_id: "2083395449814229287"
+
+  - id: 2026-07-29-openai-codex-work-sol-investigation
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-29 12:09"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT Work
+      - Codex
+    summary: Tibo 宣布已为所有 ChatGPT Work 与 Codex 用户重置用量，并说明针对 GPT-5.6 Sol 耗用偏快做了效率修复。
+    source:
+      url: https://x.com/thsottiaux/status/2082317452755751098
+      account: "@thsottiaux"
+      post_id: "2082317452755751098"
+    notes: 同帖还提到将恢复调查期间暂时停用的 5 小时限制，这不属于另一次突发重置。
+
+  - id: 2026-07-28-openai-codex-work-paid-jul28
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-28 11:09"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布已为 Codex 与 ChatGPT Work 的所有付费用户重置用量额度。
+    source:
+      url: https://x.com/thsottiaux/status/2081940052154933696
+      account: "@thsottiaux"
+      post_id: "2081940052154933696"
+    notes: "同日稍早的预告帖（https://x.com/thsottiaux/status/2081899343091843463）不另计。"
+
+  - id: 2026-07-26-openai-codex-work-after-outage
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-26 03:17"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 在说明前一晚发生过全局故障并已恢复后，宣布已为所有 Codex 与 ChatGPT Work 用户重置用量。
+    source:
+      url: https://x.com/thsottiaux/status/2081096447718723984
+      account: "@thsottiaux"
+      post_id: "2081096447718723984"
+
+  - id: 2026-07-22-openai-10m-codex-work
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-22 00:47"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 为庆祝活跃用户达到 1000 万，宣布将为 Codex 与 ChatGPT Work 的付费用户再做一次用量重置，约一小时内落地。
+    source:
+      url: https://x.com/thsottiaux/status/2079609157934886975
+      account: "@thsottiaux"
+      post_id: "2079609157934886975"
+
+  - id: 2026-07-18-openai-codex-work-paid-weekend
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-18 11:28"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布为 Codex 与 ChatGPT Work 的所有付费用户重置用量额度。
+    source:
+      url: https://x.com/thsottiaux/status/2078320950488297917
+      account: "@thsottiaux"
+      post_id: "2078320950488297917"
+    notes: 同会话另有一条不确定是否还影响了其他速率限制的跟帖，不作为单独事件。
+
+  - id: 2026-07-16-openai-9m-codex-work
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-16 12:14"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布为庆祝较早达到 900 万活跃用户，再为 Codex 与 ChatGPT Work 用户做一次用量重置，并称周额度将很快恢复满额。
+    source:
+      url: https://x.com/thsottiaux/status/2077607697487188198
+      account: "@thsottiaux"
+      post_id: "2077607697487188198"
+    notes: 前一日「要不要再重置」的询问帖不另计。
+
+  - id: 2026-07-15-openai-8m-codex-work
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-15 03:34"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布 Codex 与 ChatGPT Work 活跃用户达到 800 万，并再次为所有用户重置用量额度。
+    source:
+      url: https://x.com/thsottiaux/status/2077114635308986427
+      account: "@thsottiaux"
+      post_id: "2077114635308986427"
+    notes: 同帖还提到当时仍然没有 5 小时速率限制，这不属于另一次突发重置。
+
+  - id: 2026-07-14-openai-7m-banked
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-14 02:29"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 为庆祝 700 万活跃用户，宣布已向每名用户账户发放一张可储蓄重置，可在桌面应用或网页端使用以补满周用量。
+    source:
+      url: https://x.com/thsottiaux/status/2076735790567338203
+      account: "@thsottiaux"
+      post_id: "2076735790567338203"
+
+  - id: 2026-07-13-openai-6m-codex-work
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-13 01:59"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布活跃用户达到 600 万，并将在约一小时内落地一次用量重置。
+    source:
+      url: https://x.com/thsottiaux/status/2076365965915467978
+      account: "@thsottiaux"
+      post_id: "2076365965915467978"
+    notes: 同帖还宣布暂时取消 Plus、Business、Pro 的 5 小时用量限制，以及效率优化；前者属临时规则调整，不另计为突发重置。
+
+  - id: 2026-07-11-openai-codex-work-reset-2
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-11 13:54"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT Work
+      - Codex
+    summary: Tibo 宣布再为所有 ChatGPT Work 与 Codex 用户做一次用量重置，约 30 分钟内落地。
+    source:
+      url: https://x.com/thsottiaux/status/2075820987833274448
+      account: "@thsottiaux"
+      post_id: "2075820987833274448"
+    notes: 这是此前预告的「24 小时内两次重置」中的第二次，与当日稍早那次分计。
+
+  - id: 2026-07-11-openai-codex-work-reset-1
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-11 01:59"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+      - ChatGPT Work
+    summary: Tibo 宣布已为 Codex 与 ChatGPT Work 重置用量，并预告当天稍后还有一次。
+    source:
+      url: https://x.com/thsottiaux/status/2075641131002700120
+      account: "@thsottiaux"
+      post_id: "2075641131002700120"
+    notes: "这是庆祝 GPT-5.6 Sol 发布、「24 小时内两次重置」中的第一次；预告帖（https://x.com/thsottiaux/status/2075452680760443190）不另计。第二次见同日稍后条目。"
+
+  - id: 2026-07-10-openai-codex-work-full
+    company: OpenAI
+    status: official
+    announced_at: "2026-07-10 05:24"
+    timezone: Asia/Shanghai
+    products:
+      - ChatGPT Work
+      - Codex
+    summary: Tibo 宣布为 ChatGPT Work 与 Codex 做一次完整用量重置，约一小时内传播到位。
+    source:
+      url: https://x.com/thsottiaux/status/2075330198887940337
+      account: "@thsottiaux"
+      post_id: "2075330198887940337"
+    notes: 稍早「下午会有重置」的回复不另计。
+
+  - id: 2026-06-30-openai-codex-applied-and-banked
+    company: OpenAI
+    status: official
+    announced_at: "2026-06-30 07:39"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 在公布 Codex 耗用调查结果的同时，宣布将再做一次完整用量重置，并额外向重置库发放一张可在 24 小时内自行使用的重置。
+    source:
+      url: https://x.com/thsottiaux/status/2071740419030053227
+      account: "@thsottiaux"
+      post_id: "2071740419030053227"
+    notes: 即时重置与可储蓄重置由同一宣布发出，按一次正式事件收录。
+
+  - id: 2026-06-29-openai-codex-hard-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-06-29 07:54"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 在调查仍在进行时宣布，已对所有人的 Codex 用量做一次硬重置。
+    source:
+      url: https://x.com/thsottiaux/status/2071381664853319742
+      account: "@thsottiaux"
+      post_id: "2071381664853319742"
+    notes: 同帖提到部分用户账户里已有多张可自行使用的可储蓄重置；本条计为一次即时硬重置。
+
+  - id: 2026-06-27-openai-codex-on-the-house
+    company: OpenAI
+    status: official
+    announced_at: "2026-06-27 07:39"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 宣布向所有 Codex 用户发放一次用量重置，并称将在数小时内显示到账户中。
+    source:
+      url: https://x.com/thsottiaux/status/2070653282440405046
+      account: "@thsottiaux"
+      post_id: "2070653282440405046"
+    notes: 来源说明调查尚未发现大范围异常，但仍发放本次重置。
+
+  - id: 2026-06-18-openai-codex-double-reset
+    company: OpenAI
+    status: official
+    announced_at: "2026-06-18 08:10"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 宣布为 Codex 用户同时发放一次即时完整重置，以及一张可自行使用的可储蓄重置。
+    source:
+      url: https://x.com/thsottiaux/status/2067399435009622521
+      account: "@thsottiaux"
+      post_id: "2067399435009622521"
+    notes: "稍早一条仅修正笔误的重复帖不另计。前一日「24 小时内重置各档 Codex 速率限制」的预告（https://x.com/thsottiaux/status/2066956441173323943）视为同一事件，不另计。"
+
+  - id: 2026-06-04-openai-codex-after-incidents
+    company: OpenAI
+    status: official
+    announced_at: "2026-06-04 08:25"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 在说明 Codex 近 24 小时发生过多次可靠性故障后，宣布已为所有付费方案重置 Codex 用量。
+    source:
+      url: https://x.com/thsottiaux/status/2062329981548802523
+      account: "@thsottiaux"
+      post_id: "2062329981548802523"
+
+  - id: 2026-05-31-openai-codex-5m-paid
+    company: OpenAI
+    status: official
+    announced_at: "2026-05-31 23:25"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 宣布已为所有付费 ChatGPT 订阅重置 Codex 用量，周额度与小时额度均恢复满额。
+    source:
+      url: https://x.com/thsottiaux/status/2061106703446450392
+      account: "@thsottiaux"
+      post_id: "2061106703446450392"
+    notes: 同日稍早以 500 万用户为由预告次日上午重置，不另计。
+
+  - id: 2026-05-24-openai-codex-cache-fix
+    company: OpenAI
+    status: official
+    announced_at: "2026-05-24 04:14"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 宣布已回滚一项影响长会话缓存命中率的优化，并为所有账户重置了用量。
+    source:
+      url: https://x.com/thsottiaux/status/2058280452851638313
+      account: "@thsottiaux"
+      post_id: "2058280452851638313"
+
+  - id: 2026-05-17-openai-codex-paid-plans
+    company: OpenAI
+    status: official
+    announced_at: "2026-05-17 01:51"
+    timezone: Asia/Shanghai
+    products:
+      - Codex
+    summary: Tibo 宣布已为所有付费方案重置 Codex 用量。
+    source:
+      url: https://x.com/thsottiaux/status/2055707616605835333
+      account: "@thsottiaux"
+      post_id: "2055707616605835333"
+    notes: 同日稍早预告将于当晚重置，随后还有传播问题跟进，均不另计。
+
+  # --- xAI ---
+  - id: 2026-11-10-xai-grok-bot-weekly
+    company: xAI
+    status: official
+    announced_at: "2026-11-10 03:17"
+    timezone: Asia/Shanghai
+    products:
+      - Grok Bot
+    summary: Grok Bot 官方账号宣布已为所有 Grok Bot 用户重置每周额度。
+    source:
+      url: https://x.com/bot/status/2119871982946971659
+      account: "@bot"
+      post_id: "2119871982946971659"
+    notes: 即时到账。
+
+  - id: 2026-10-03-xai-grok-bot-usage
+    company: xAI
+    status: official
+    announced_at: "2026-10-03 02:05"
+    timezone: Asia/Shanghai
+    products:
+      - Grok Bot
+    summary: Grok Bot 官方账号宣布已为所有 Grok Bot 用户重置用量额度。
+    source:
+      url: https://x.com/bot/status/2106083136002310193
+      account: "@bot"
+      post_id: "2106083136002310193"
+    notes: 即时到账。
+
+  - id: 2026-09-06-xai-grok-bot-usage-sep
+    company: xAI
+    status: official
+    announced_at: "2026-09-06 02:24"
+    timezone: Asia/Shanghai
+    products:
+      - Grok Bot
+    summary: Grok Bot 官方账号宣布已为所有 Grok Bot 用户重置用量额度。
+    source:
+      url: https://x.com/bot/status/2096303514230423629
+      account: "@bot"
+      post_id: "2096303514230423629"
+    notes: 即时到账。
+
+  - id: 2026-08-27-xai-grok-bot-weekly-all-users
+    company: xAI
+    status: official
+    announced_at: "2026-08-27 01:23"
+    timezone: Asia/Shanghai
+    products:
+      - Grok Bot
+    summary: Grok Bot 官方账号在扩大订阅准入的同时，宣布也为所有用户重置每周用量额度。
+    source:
+      url: https://x.com/bot/status/2092664183334846840
+      account: "@bot"
+      post_id: "2092664183334846840"
+    notes: 同帖还宣布 SuperGrok 与 Cursor Pro 订阅者可使用 Grok Bot，属产品准入，不另计事件。重置对象按来源写为所有用户。
+
+  # --- Anthropic ---
+  - id: 2026-11-11-anthropic-full-banked-pro-max-ultra-team
+    company: Anthropic
+    status: official
+    announced_at: "2026-11-11 05:59"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: "ClaudeDevs 宣布已向所有 Pro、Max、Ultra 与 Team 用户发放一次覆盖全部模型与额度的免费完整重置，可在 12 月 10 日 14:00 PT 前随时使用。"
+    source:
+      url: https://x.com/ClaudeDevs/status/2120275296637321476
+      account: "@ClaudeDevs"
+      post_id: "2120275296637321476"
+    notes: 可储蓄重置。来源说明这是对近期超额占用及 Fable 专项重置覆盖不足的补偿，但发放对象为上述全部方案用户，不只限于受影响者。员工号转发或说明不另计。
+
+  - id: 2026-11-10-anthropic-fable-launch-resets
+    company: Anthropic
+    status: official
+    announced_at: "2026-11-10 03:04"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布随 Fable 5.2 上线发放专项重置：Ultra 与 Team Premium 按订阅时长获 1 至 3 次、须在 3 月 8 日前使用；Pro 与 Team Standard 另有一周试用并附一次重置。
+    source:
+      url: https://x.com/ClaudeDevs/status/2119868704544711108
+      account: "@ClaudeDevs"
+      post_id: "2119868704544711108"
+    notes: "属新模型上线附带的额外重置，范围按来源限于 Fable 相关用量，与次日那次「全模型完整重置」分计。帮助文档：https://support.claude.com/en/articles/17506494-claude-fable-5-2-launch-offers"
+
+  - id: 2026-09-23-anthropic-opus55-banked
+    company: Anthropic
+    status: official
+    announced_at: "2026-09-23 00:31"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: Claude 官方账号宣布向订阅用户发放一次可储蓄的速率限制重置，可自行选择使用时间；同线程开发者账号写明对象为 Pro、Max 与 Team，并可使用至 10 月 22 日。
+    source:
+      url: https://x.com/claudeai/status/2102435538120691886
+      account: "@claudeai"
+      post_id: "2102435538120691886"
+    notes: "同线程更完整的说明见 https://x.com/ClaudeDevs/status/2102438803013333469 与 https://x.com/ClaudeDevs/status/2102438800836489554。同帖还宣布提高 5 小时额度，属常规提额，不另计。员工转发不另计。"
+
+  - id: 2026-09-05-anthropic-max-weekly
+    company: Anthropic
+    status: official
+    announced_at: "2026-09-05 04:08"
+    timezone: Asia/Shanghai
+    products:
+      - Claude Max
+    summary: Lydia Hallie 宣布刚为所有 Claude Max 方案用户重置了每周额度。
+    source:
+      url: https://x.com/lydiahallie/status/2095967323412930677
+      account: "@lydiahallie"
+      post_id: "2095967323412930677"
+    notes: 即时到账。来源为监测名单中的员工账号，且明确宣布已经重置。
+
+  - id: 2026-09-02-anthropic-fable51-all-users
+    company: Anthropic
+    status: official
+    announced_at: "2026-09-02 02:35"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布在 Fable 5.1 发布的同时，已为所有用户重置 5 小时额度与每周额度。
+    source:
+      url: https://x.com/ClaudeDevs/status/2094856679250919746
+      account: "@ClaudeDevs"
+      post_id: "2094856679250919746"
+    notes: 即时到账。与数日后仅针对 Max 周额度的那次重置分计。
+
+  - id: 2026-07-16-anthropic-5h-weekly-all-jul16
+    company: Anthropic
+    status: official
+    announced_at: "2026-07-16 11:58"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已为所有用户重置 5 小时与每周速率限制。
+    source:
+      url: https://x.com/ClaudeDevs/status/2077603834453770467
+      account: "@ClaudeDevs"
+      post_id: "2077603834453770467"
+    notes: 即时到账。
+
+  - id: 2026-07-10-anthropic-5h-weekly-all-jul9
+    company: Anthropic
+    status: official
+    announced_at: "2026-07-10 02:01"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已为所有用户重置 5 小时与每周速率限制。
+    source:
+      url: https://x.com/ClaudeDevs/status/2075279141352706215
+      account: "@ClaudeDevs"
+      post_id: "2075279141352706215"
+    notes: 即时到账。
+
+  - id: 2026-07-02-anthropic-5h-weekly-all-jul1
+    company: Anthropic
+    status: official
+    announced_at: "2026-07-02 05:16"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已再次为所有人重置 5 小时与每周速率限制。
+    source:
+      url: https://x.com/ClaudeDevs/status/2072429181565288665
+      account: "@ClaudeDevs"
+      post_id: "2072429181565288665"
+    notes: 即时到账。来源将此次与 Fable 5 恢复可用一并说明，但仍明确宣布了额度重置。
+
+  - id: 2026-06-20-anthropic-5h-weekly-all-plans
+    company: Anthropic
+    status: official
+    announced_at: "2026-06-20 08:05"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已为所有方案的所有用户重置 5 小时与每周用量限制。
+    source:
+      url: https://x.com/ClaudeDevs/status/2068122937308426676
+      account: "@ClaudeDevs"
+      post_id: "2068122937308426676"
+    notes: 即时到账。前一日仅向受周额度显示错误影响的用户补偿的重置不计入本时间线，以免与这次面向所有人的重置混淆。
+
+  - id: 2026-06-13-anthropic-5h-weekly-all-jun13
+    company: Anthropic
+    status: official
+    announced_at: "2026-06-13 10:24"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已为所有用户重置 5 小时与每周速率限制。
+    source:
+      url: https://x.com/ClaudeDevs/status/2065621176735646006
+      account: "@ClaudeDevs"
+      post_id: "2065621176735646006"
+    notes: 即时到账。
+
+  - id: 2026-06-10-anthropic-fable5-all-users
+    company: Anthropic
+    status: official
+    announced_at: "2026-06-10 05:48"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已为所有用户重置 5 小时与每周速率限制。
+    source:
+      url: https://x.com/ClaudeDevs/status/2064464557951852643
+      account: "@ClaudeDevs"
+      post_id: "2064464557951852643"
+    notes: "即时到账。同日员工号 @alexalbert__ 的转发说明（https://x.com/alexalbert__/status/2064467657483829441）不另计。"
+
+  - id: 2026-06-02-anthropic-pro-max-subagent-fix
+    company: Anthropic
+    status: official
+    announced_at: "2026-06-02 01:35"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已为所有 Pro 与 Max 方案用户重置 5 小时与每周速率限制，并说明修复了部分 Claude Code 会话过度并行子代理、耗用偏快的问题。
+    source:
+      url: https://x.com/ClaudeDevs/status/2061501787769893055
+      account: "@ClaudeDevs"
+      post_id: "2061501787769893055"
+    notes: 即时到账。发放对象按来源为全部 Pro 与 Max 用户，不只限于受影响会话。
+
+  - id: 2026-05-16-anthropic-5h-weekly-all-may15
+    company: Anthropic
+    status: official
+    announced_at: "2026-05-16 02:00"
+    timezone: Asia/Shanghai
+    products:
+      - Claude
+    summary: ClaudeDevs 宣布已为所有人重置 5 小时与每周速率限制。
+    source:
+      url: https://x.com/ClaudeDevs/status/2055347539923308703
+      account: "@ClaudeDevs"
+      post_id: "2055347539923308703"
+    notes: 即时到账。
