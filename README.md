@@ -69,7 +69,7 @@ This is a **Grok Bot skill** (reusable instructions plus scheduled routines), no
 2. 把 [`skill/model-watch.md`](skill/model-watch.md) 保存为技能 `AI 新模型预告监测`。
 3. 按 [`routine/prompt.md`](routine/prompt.md) 建额度例行（`@every 30m`，灵活窗口 ±15 分钟）。
 4. 按 [`routine/model-watch.md`](routine/model-watch.md) 建新模型例行（用户本地时区 `0 9 * * *`，灵活窗口），并且只看监测配置里已勾选的公司。
-5. 把「结果发给谁、没有新情况时保持安静」写进例行说明。时间用用户本地时区，报告时标明时区。
+5. 把「结果发给谁、没有新情况时保持安静」写进例行说明。时间用用户本地时区，报告时标明时区。通知只保留必要信息，用固定短结构：公司、正式或疑似、时间、一句话要点、来源链接；不要把原文贴进对话，也不要展开长段统计。
 
 不需要再给这些技能单独配置 X 登录。
 
